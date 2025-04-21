@@ -21,7 +21,7 @@ function About() {
             autoPlay
             muted
             playsInline
-            src="media/videos/glob.mp4"
+            src="/media/videos/glob.mp4"
             type="video.mp4"
           ></video>
         </div>
@@ -32,7 +32,7 @@ function About() {
             experience crafting visually compelling designs and user-friendly
             designs and websites.
           </p>
-          <img src="media/images/card-profile-pic.png" alt="card image" />
+          <img src="/media/images/card-profile-pic.png" alt="card image" />
         </div>
         <div className="card">
           <h1>
@@ -58,7 +58,7 @@ function About() {
             HTML, CSS, JavaScript, React, Next.js, Python, SQL, and more
             crafting dynamic, efficient, and scalable solutions.
           </p>
-          <img src="media/images/grid4.png" alt="card image" />
+          <img src="/media/images/grid4.png" alt="card image" />
         </div>
         <div className="card">
           <h1>My Creative Background</h1>
@@ -67,7 +67,7 @@ function About() {
             <br /> I bring extensive expertise in design tools like Photoshop,
             Illustrator, Figma, Adobe XD, Canva, and more.
           </p>
-          <img src="media/images/grid5.png" alt="card image" />
+          <img src="/media/images/grid5.png" alt="card image" />
         </div>
       </div>
     </div>

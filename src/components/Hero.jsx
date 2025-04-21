@@ -26,12 +26,12 @@ function Hero() {
 
       <div className="hero-image-container autoBlur">
         <img
-          src="media/svgs/ring-effect.svg"
+          src="/media/svgs/ring-effect.svg"
           alt="Hero Image Effect"
           className="hero-image-ring-effect-1"
         />
         <img
-          src="media/images/hero-pic.png"
+          src="/media/images/hero-pic.png"
           alt="Hero Image"
           className="hero-image"
         />

@@ -30,7 +30,7 @@ function Header() {
           muted
           playsInline
           className="background-vid"
-          src="media/videos/galaxy.mp4"
+          src="/media/videos/galaxy.mp4"
           type="video/mp4"
         ></video>
       </div>
@@ -159,7 +159,7 @@ function Header() {
           autoPlay
           muted
           playsInline
-          src="media/videos/orange-mots.mp4"
+          src="/media/videos/orange-mots.mp4"
           type="video/mp4"
         ></video>
       </div>
