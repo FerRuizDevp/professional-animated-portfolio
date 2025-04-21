@@ -32,14 +32,9 @@ node_modules/
 # Ignore .env files containing sensitive information
 .env
 
-# Ignore other IDE-related files
+# Ignore IDE/editor config files
 .vscode/
 
-#IGNORE
-frontend/
-media/
-public/
-src/
 
 
 

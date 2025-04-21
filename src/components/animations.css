@@ -1,0 +1,99 @@
+/* ==========================
+   SCROLLING ANIMATIONS
+========================== */
+
+/* Fallback (Default State) — all browsers */
+.autoBlur,
+.autoDisplay,
+.fadeInRight {
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Active scroll state — triggered by JS */
+.scroll-active {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1);
+}
+
+/* ================
+   Scroll Animations
+   Only if supported
+=================== */
+@supports (animation-timeline: view()) {
+  .autoBlur {
+    animation: autoBlurAnimation linear both;
+    animation-timeline: view();
+  }
+
+  .autoDisplay {
+    animation: autoDisplayAnimation both;
+    animation-timeline: view();
+  }
+
+  .fadeInRight {
+    animation: fadeInAnimation both;
+    animation-timeline: view();
+  }
+}
+
+/* Keyframes */
+@keyframes autoBlurAnimation {
+  0% {
+    filter: blur(40px);
+    opacity: 0;
+  }
+  35%,
+  65% {
+    filter: blur(0);
+    opacity: 1;
+  }
+  100% {
+    filter: blur(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes autoDisplayAnimation {
+  from {
+    transform: translateY(-200px) scale(0);
+    opacity: 0.2;
+    filter: blur(10px);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    transform: translateX(-500px) scale(0.2);
+    opacity: 0;
+    filter: blur(20px);
+  }
+  35%,
+  65% {
+    transform: translateX(0px) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    filter: blur(20px);
+  }
+}
+
+/* ========================
+   MOBILE — Disable Scroll Animations
+========================= */
+@media (max-width: 700px) {
+  .autoBlur,
+  .autoDisplay,
+  .fadeInRight {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

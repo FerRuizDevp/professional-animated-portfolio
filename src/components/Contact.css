@@ -1,0 +1,440 @@
+/* CONTACT SECTION */
+.contact-section {
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 10%;
+  margin-bottom: 25%;
+}
+
+.contact-section h1 {
+  position: absolute;
+  top: 10%;
+  text-align: center;
+}
+
+.contact-section span {
+  position: absolute;
+  font-size: 1.2rem;
+  text-align: center;
+  top: 33%;
+}
+
+.two-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30%;
+  gap: 20%;
+}
+
+/*Socials Section*/
+.socials-section {
+  display: flex;
+  flex-direction: column;
+  /*margin-top: 15px;*/
+}
+
+.social-info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/*Links/button hover animation*/
+.social-info-box ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-info-box ul li {
+  display: flex;
+  position: relative;
+  list-style: none;
+  padding-left: 15px;
+  width: 45px;
+  height: 45px;
+  border-radius: 60px;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: width 0.5s ease-in-out;
+}
+
+.social-info-box ul li:hover {
+  width: 125px;
+  color: black;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
+.social-info-box ul li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 60px;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.social-info-box ul li:hover::before {
+  opacity: 1;
+}
+
+.social-info-box ul li::after {
+  content: "";
+  position: absolute;
+  top: -0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  border-radius: 60px;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  filter: blur(15px);
+  transition: width 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.social-info-box ul li:hover::after {
+  opacity: 1;
+}
+
+/* Icon styling */
+.social-info-box ul li i {
+  font-size: 1.5rem;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Change text and icon color to black on hover */
+.social-info-box ul li:hover a,
+.social-info-box ul li:hover i {
+  color: black;
+  font-weight: 700;
+}
+
+.social-info-box a {
+  display: flex;
+  align-items: center;
+  width: auto;
+  gap: 10px;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 1rem;
+  align-content: center;
+}
+
+.social-info-box i {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.social-info-box a:hover,
+.social-info-box i:hover {
+  color: black;
+  font-weight: 700;
+}
+
+.social-media-icons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.social-media-icons a {
+  margin-right: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  width: 35px;
+  height: 35px;
+  color: lightgray;
+  border: 2px solid var(--primary-color);
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.social-media-icons a i {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-media-icons a:hover {
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+.social-media-icons a:hover,
+.social-media-icons i:hover {
+  color: black;
+}
+
+/*Form section*/
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  margin-top: 0;
+}
+
+/* Text */
+.contact-box p {
+  position: relative;
+  font-size: 1rem;
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+}
+
+/* Inputs */
+.contact-box input,
+.contact-box textarea {
+  width: 100%;
+  min-width: 400px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: rgb(105, 105, 105);
+  background-color: lightgray;
+  outline: none;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: 0.3s;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+  border-color: var(--primary-border-color);
+  box-shadow: 0 0 5px var(--primary-shadow-color);
+}
+
+.contact-box input:hover,
+.contact-box textarea:hover {
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* Textarea */
+.contact-box textarea {
+  height: 100px;
+  resize: none;
+}
+
+::placeholder {
+  color: gray;
+  opacity: 0.7;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-box button {
+  max-width: 200px;
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+  padding: 17px;
+  border-radius: 10px;
+  border: 1px solid var(--primary-border-color);
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 5px var(--primary-shadow-color);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-box button i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.contact-box button:hover {
+  color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.contact-box button:hover i {
+  animation: fade-left 0.5s ease-in-out forwards;
+}
+
+.form-status {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeInUp 0.5s ease-out;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Success style */
+.form-status.success {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-border-color);
+}
+
+/* Error style */
+.form-status.error {
+  background-color: var(--secondary-bg-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--primary-border-color);
+}
+
+/* Optional fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TABLET RESPONSIVENESS */
+@media (max-width: 1000px) {
+  .contact-section {
+    left: 0;
+    margin-top: 30%;
+    height: auto;
+  }
+  .contact-section .section-title {
+    font-size: 2.2rem;
+  }
+  .contact-section span {
+    top: 27%;
+  }
+  .two-columns {
+    margin-top: 55%;
+    gap: 5%;
+  }
+  .contact-box {
+    margin-bottom: 20%;
+  }
+  .contact-box input,
+  .contact-box textarea {
+    width: 300px;
+  }
+  .contact-box button {
+    margin-top: 40px;
+  }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (min-widh: 600px), (max-width: 900px) {
+  .contact-section {
+    width: 90%;
+    height: auto;
+  }
+  .contact-section .section-title {
+    font-size: 2rem;
+  }
+  .contact-section span {
+    font-size: 1rem;
+    top: 23%;
+  }
+  .two-columns {
+    flex-direction: column;
+    /*position: relative;*/
+    width: 60%;
+    top: 330px;
+    gap: 40px;
+    margin: 0 auto;
+    /*margin-bottom: 100px;*/
+  }
+  .socials-section {
+    order: 2;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* Optional: aligns them vertically */
+    height: auto;
+    width: 100%;
+    margin-bottom: 20%;
+  }
+  .social-info-box {
+    justify-content: flex-start;
+  }
+  .social-media-icons {
+    margin-top: -70px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: fit-content; /* or set a specific width if needed */
+    max-width: 120px; /* adjust based on icon size */
+    justify-content: center;
+  }
+
+  .social-media-icons i {
+    flex: 0 1 40px; /* allow wrapping into two items per row */
+    font-size: 24px; /* or your preferred size */
+    text-align: center;
+  }
+  .contact-box {
+    order: 1;
+    margin-top: 100%;
+  }
+  .contact-box input,
+  .contact-box textarea {
+    width: 100%;
+    min-width: 200px;
+  }
+}
+
+/* SMALLER-SCREENS RESPONSIVENESS */
+@media (min-widh: 300px), (max-width: 500px) {
+  .contact-section {
+    margin-top: -5%;
+  }
+  .contact-section .section-title {
+    font-size: 1.8rem;
+  }
+  .contact-section span {
+    width: 90%;
+    top: 18%;
+  }
+  .two-columns {
+    left: 0;
+    width: 80%;
+    margin-top: 20%;
+    /*margin-bottom: 100px;*/
+  }
+  .contact-box {
+    margin-left: -5%;
+    margin-top: 100%;
+    margin-bottom: 60px;
+  }
+  .contact-box button {
+    min-width: 315px;
+  }
+  .socials-section {
+    margin-bottom: 60%;
+  }
+}

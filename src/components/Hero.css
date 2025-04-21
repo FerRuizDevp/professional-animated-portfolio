@@ -1,0 +1,308 @@
+/*HERO-SECTION
+hero info*/
+.hero {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-info {
+  position: relative;
+  left: 5%;
+}
+
+.hero-info .hero-info-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  padding: 8px 5px;
+  border: 1px solid var(--primary-border-color);
+  width: 260px;
+  background-color: var(--secondary-bg-color);
+  box-shadow: 0 0 5px var(--primary-shadow-color);
+  border-radius: 50px;
+}
+
+.hero-info .hero-info-title i {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+
+.hero-info h1 {
+  font-size: 3.7rem;
+  max-width: 600px;
+  font-weight: 700;
+  line-height: 70px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.hero-info p {
+  max-width: 600px;
+  line-height: 25px;
+  margin-bottom: 40px;
+  font-size: 1.25rem;
+}
+
+.hero-info h1,
+.hero-info p {
+  position: relative;
+  z-index: 10; /* ✅ Makes sure text is on top */
+}
+
+.hero-info button {
+  max-width: 200px;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 15px;
+  border-radius: 20px;
+  border: 1px solid var(--primary-border-color);
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 5px var(--primary-shadow-color);
+  cursor: pointer;
+  transition: 0.1s;
+  /* ✅ Force it below */
+  width: auto;
+  position: relative; /* ✅ Ensures it's inside the normal flow */
+  z-index: 11; /* ✅ Forces it to stay on top */
+}
+
+.hero-info button i {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.hero-info button a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+  transition: 0.1s;
+}
+
+.hero-info button:hover a {
+  color: var(--primary-color);
+}
+
+.hero-info button:hover {
+  box-shadow: 0 0 15px var(--secondary-shadow-color);
+  color: var(--primary-color);
+}
+
+.hero-info button:hover i {
+  animation: fade-left 0.5s ease-in-out forwards;
+}
+
+/*Hero image*/
+.hero-image-container {
+  position: absolute;
+  right: 5%;
+  max-width: 350px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  z-index: 0;
+  -webkit-mask-image: url("media/svgs/circle.svg");
+  mask-image: url("media/svgs/circle.svg");
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image-ring-effect-1 {
+  position: absolute;
+  max-width: 380px;
+  height: auto;
+  z-index: 1;
+  mix-blend-mode: lighten;
+  transform: scale(1.5);
+  filter: brightness(
+    100%
+  ); /* Ensures full brightness 
+  /* Apply the animation */
+  animation: fireEffect 3s infinite ease-in-out alternate;
+}
+
+@keyframes fireEffect {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(110%) hue-rotate(0deg);
+    transform: scale(1.1) rotate(0deg);
+  }
+  25% {
+    background-position: 50% 100%;
+    filter: brightness(130%) hue-rotate(10deg);
+    transform: scale(1.15) rotate(1deg);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(120%) hue-rotate(-10deg);
+    transform: scale(1.1) rotate(-1deg);
+  }
+  75% {
+    background-position: 50% 0%;
+    filter: brightness(140%) hue-rotate(5deg);
+    transform: scale(1.12) rotate(2deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: brightness(110%) hue-rotate(0deg);
+    transform: scale(1.1) rotate(0deg);
+  }
+}
+
+/*Scroll-down animation*/
+.scroll-down {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 25px;
+  height: 50px;
+  border: 1.5px solid lightgray;
+  border-radius: 50px;
+  left: 50%;
+  bottom: 5vh;
+  transform: translateX(-50%);
+  z-index: 10;
+  box-shadow: 0 0 5px rgba(211, 211, 211, 0.4);
+  cursor: pointer;
+}
+
+/* Arrow animation */
+.scroll-down::before,
+.scroll-down::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 20%;
+  left: 50%;
+  border: 2px solid lightgray;
+  border-radius: 2px;
+  border-top: transparent;
+  border-left: transparent;
+  animation: scroll-down 1.5s ease-in-out infinite;
+}
+
+/* First arrow */
+.scroll-down::before {
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+/* Second arrow (delayed for a wave effect) */
+.scroll-down::after {
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  animation-delay: 0.3s;
+}
+
+/* Keyframes for the animation */
+@keyframes scroll-down {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0) rotate(45deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    transform: translateX(-50%) translateY(10px) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) rotate(45deg);
+  }
+}
+
+.scroll-down:hover {
+  box-shadow: 0 0 25px var(--secondary-shadow-color);
+}
+
+/* TABLET RESPONSIVENESS */
+@media (max-width: 1000px) {
+  .hero-info h1 {
+    font-size: 40px;
+    max-width: 400px;
+    line-height: 45px;
+  }
+  .hero-info p {
+    max-width: 400px;
+  }
+  .hero-image-container {
+    right: 2.5%;
+    width: 260px;
+  }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (min-widh: 600px), (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+  }
+  .hero-info {
+    width: 90%;
+    bottom: -15%;
+    left: 0;
+    margin: 0 auto;
+  }
+  .hero-info .hero-info-title {
+    margin: 5% auto;
+  }
+  .hero-info h1 {
+    line-height: 50px;
+    max-width: 95%;
+    text-align: center;
+    margin: 5% auto;
+  }
+  .hero-info p {
+    max-width: 95%;
+    margin: 5% auto;
+  }
+  .hero-info button {
+    left: 2%;
+  }
+  .hero-image-container {
+    bottom: 15vh;
+    width: 30%;
+    right: auto;
+    margin: auto;
+  }
+  .scroll-down {
+    bottom: -10vh;
+  }
+}
+
+/* SMALLER-SCREENS RESPONSIVENESS */
+@media (min-widh: 300px), (max-width: 500px) {
+  .hero-info .hero-info-title {
+    margin: 0 auto;
+  }
+  .hero-info p {
+    margin-bottom: 8%;
+    font-size: 1.1rem;
+    line-height: 23px;
+  }
+  .hero-image-container {
+    bottom: 8vh;
+  }
+  .scroll-down {
+    bottom: -25vh;
+  }
+}

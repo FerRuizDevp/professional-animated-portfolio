@@ -1,0 +1,222 @@
+/*Global variables*/
+:root {
+  --primary-color: #ffaa00;
+  --secondary-color: #eb8100;
+  --primary-bg-color: rgba(98, 58, 0, 0.25);
+  --secondary-bg-color: rgba(73, 33, 0, 0.25);
+  --primary-shadow-color: #dec17268;
+  --secondary-shadow-color: rgba(255, 170, 0, 0.7);
+  --primary-border-color: rgb(255, 170, 0, 0.4);
+  color-scheme: dark;
+  --official-gradient: linear-gradient(
+    to right,
+    #ffaa00,
+    #ff9b0b,
+    #eb8100,
+    #ffbb00,
+    #fdd76d,
+    #e7ca52,
+    #ffaa00
+  );
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: lightgray;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh; /* Ensures it covers at least the viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--primary-bg-color);
+  gap: 1rem;
+}
+
+.highlighted-text {
+  color: white;
+  font-weight: 600;
+}
+
+/* Scroll-bar + Glass Effect */
+/* Webkit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 8px; /* Slim scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.9); /* Subtle glass effect */
+  border-radius: 10px;
+  backdrop-filter: blur(10px); /* Blurred background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border-radius: 10px;
+  box-shadow: 0 0 8px var(--primary-shadow-color);
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  box-shadow: 0 0 15px var(--secondary-shadow-color);
+}
+
+/* For Firefox */
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--primary-bg-color) rgba(255, 255, 255, 0.1);
+  scrollbar-width: thin;
+}
+
+/*Gradient Animation*/
+.gradient {
+  background: linear-gradient(
+    to right,
+    #ffaa00,
+    #ff9b0b,
+    #eb8100,
+    #ffbb00,
+    #fdd76d,
+    #e7ca52,
+    #ffaa00
+  );
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 1.5s linear infinite;
+}
+
+@keyframes animate-gradient {
+  to {
+    background-position: -200% center;
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* WAVY EFFECT UNDER-TEXT */
+.wavy {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.wavy::after {
+  content: "aaaaaaaaaaaaaa";
+  position: absolute;
+  top: 15px;
+  left: 0;
+  font-size: 1.2em;
+  color: transparent;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--primary-color);
+  text-decoration-line: underline;
+  animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(-55px);
+  }
+}
+
+/* WAVY EFFECT ON HOVER SHORT*/
+.wavy-sh-hover {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.wavy-sh-hover::after {
+  content: "~~~~";
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  left: 0;
+  font-size: 1.2em;
+  color: transparent;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--primary-color);
+  text-decoration-line: underline;
+  visibility: hidden;
+}
+
+.wavy-sh-hover:hover::after {
+  visibility: visible;
+  animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(5%);
+  }
+}
+
+/* WAVY EFFECT ON HOVER LONG */
+.wavy-lg-hover {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.wavy-lg-hover::after {
+  content: "~~~~~~";
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  left: 0;
+  font-size: 1.2em;
+  color: transparent;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--primary-color);
+  text-decoration-line: underline;
+  visibility: hidden;
+}
+
+.wavy-lg-hover:hover::after {
+  visibility: visible;
+  animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
