@@ -337,7 +337,7 @@ p {
   }
   .card video {
     height: 60%;
-    width: 80%;
+    width: 100%;
   }
   .card:nth-child(1) h1 {
     top: 62%;

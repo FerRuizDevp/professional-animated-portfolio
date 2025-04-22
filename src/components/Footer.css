@@ -83,9 +83,15 @@ footer .copyright {
   }
 }*/
 
-/* SMALLER-SCREENS RESPONSIVENESS 
-@media (max-width: 400px) {
-  footer {
-    margin-bottom: 0px;
+/* SMALLER-SCREENS RESPONSIVENESS */
+@media (min-widh: 300px), (max-width: 500px) {
+  .back-to-top {
+    top: -60px !important;
   }
-}*/
+}
+
+@media (max-widh: 400px) {
+  .back-to-top {
+    top: -60px !important;
+  }
+}

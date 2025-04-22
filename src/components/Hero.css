@@ -301,9 +301,10 @@ hero info*/
     line-height: 23px;
   }
   .hero-image-container {
-    bottom: 8vh;
+    bottom: 5vh;
   }
   .scroll-down {
+    display: none !important;
     bottom: -25vh;
   }
 }
