@@ -1,9 +1,11 @@
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const fetchProjects = async () => {
   const cachedProjects = localStorage.getItem("projects");
   if (cachedProjects) return JSON.parse(cachedProjects);
 
   try {
-    const response = await fetch("http://localhost:5000/api/projects");
+    const response = await fetch(`${BACKEND_URL}/api/projects`);
     const data = await response.json();
 
     // Sort projects by latest update date (pushedAt)
@@ -19,7 +21,7 @@ export const fetchProjects = async () => {
 
 export const fetchRateLimit = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/rate-limit");
+    const response = await fetch(`${BACKEND_URL}/api/rate-limit`);
     const data = await response.json();
     return data;
   } catch (error) {

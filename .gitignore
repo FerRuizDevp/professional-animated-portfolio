@@ -30,7 +30,7 @@ dist/
 node_modules/
 
 # Ignore .env files containing sensitive information
-.env
+backend/.env
 
 # Ignore IDE/editor config files
 .vscode/
