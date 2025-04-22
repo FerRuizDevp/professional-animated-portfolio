@@ -8,11 +8,12 @@ function ProjectSorting() {
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [filter, setFilter] = useState("All");
   const [isExpanded, setIsExpanded] = useState(false); // Tracks expanded/collapsed state
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const reposResponse = await fetch("http://localhost:5000/api/projects");
+        const reposResponse = await fetch(`${BACKEND_URL}/api/projects`);
         const reposData = await reposResponse.json();
 
         const projectData = reposData.map((repo) => {
