@@ -115,8 +115,8 @@ hero info*/
   height: auto;
   object-fit: cover;
   z-index: 0;
-  -webkit-mask-image: url("media/svgs/circle.svg");
-  mask-image: url("media/svgs/circle.svg");
+  -webkit-mask-image: url("/media/svgs/circle.svg");
+  mask-image: url("/media/svgs/circle.svg");
   -webkit-mask-size: cover;
   mask-size: cover;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -280,7 +280,7 @@ hero info*/
     left: 2%;
   }
   .hero-image-container {
-    bottom: 15vh;
+    bottom: 10vh;
     width: 30%;
     right: auto;
     margin: auto;
