@@ -8,7 +8,7 @@ function Skills() {
       <div className="skills-box">
         <div className="skills-image-container">
           <img
-            src="/media/images/digital-brain.png"
+            src="media/images/digital-brain.png"
             alt="skills-image"
             className="skills-image"
           />
@@ -75,63 +75,63 @@ function Skills() {
               data-tooltip="HTML"
               style={{ "--position": "1" }}
             >
-              <img src="/media/images/1.png" alt="HTML" />
+              <img src="media/images/1.png" alt="HTML" />
             </div>
             <div
               className="item"
               data-tooltip="CSS"
               style={{ "--position": "2" }}
             >
-              <img src="/media/images/2.png" alt="CSS" />
+              <img src="media/images/2.png" alt="CSS" />
             </div>
             <div
               className="item"
               data-tooltip="JavaScript"
               style={{ "--position": "3" }}
             >
-              <img src="/media/images/3.png" alt="JavaScript" />
+              <img src="media/images/3.png" alt="JavaScript" />
             </div>
             <div
               className="item"
               data-tooltip="React"
               style={{ "--position": "4" }}
             >
-              <img src="/media/images/4.png" alt="React" />
+              <img src="media/images/4.png" alt="React" />
             </div>
             <div
               className="item"
               data-tooltip="Node.js"
               style={{ "--position": "5" }}
             >
-              <img src="/media/images/5.png" alt="Node.js" />
+              <img src="media/images/5.png" alt="Node.js" />
             </div>
             <div
               className="item"
               data-tooltip="Express.js"
               style={{ "--position": "6" }}
             >
-              <img src="/media/images/6.png" alt="Express.js" />
+              <img src="media/images/6.png" alt="Express.js" />
             </div>
             <div
               className="item"
               data-tooltip="GitHub"
               style={{ "--position": "7" }}
             >
-              <img src="/media/images/7.png" alt="GitHub" />
+              <img src="media/images/7.png" alt="GitHub" />
             </div>
             <div
               className="item"
               data-tooltip="Figma"
               style={{ "--position": "8", width: "65px", marginLeft: "18px" }}
             >
-              <img src="/media/images/8.png" alt="Figma" />
+              <img src="media/images/8.png" alt="Figma" />
             </div>
             <div
               className="item"
               data-tooltip="Framer motion"
               style={{ "--position": "9" }}
             >
-              <img src="/media/images/9.png" alt="Framer motion" />
+              <img src="media/images/9.png" alt="Framer motion" />
             </div>
             {/*<span className="tooltip">{tag}</span>*/}
           </div>
