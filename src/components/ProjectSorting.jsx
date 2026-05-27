@@ -1,110 +1,157 @@
 import React, { useEffect, useState } from "react";
 import Projects from "./Projects";
-import { IGNORED_TAGS } from "../components/tags-config"; // ✅ Import ignored tags
+import { IGNORED_TAGS } from "../components/tags-config";
 
-// Fetch projects from GitHub API
+const GITHUB_USERNAME = "FerRuizDevp";
+
 function ProjectSorting() {
   const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [filter, setFilter] = useState("All");
-  const [isExpanded, setIsExpanded] = useState(false); // Tracks expanded/collapsed state
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const reposResponse = await fetch(`${BACKEND_URL}/api/projects`);
-        const reposData = await reposResponse.json();
+        const reposResponse = await fetch(
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`,
+        );
 
-        const projectData = reposData.map((repo) => {
-          // Check if README exists
-          const readmeContent = repo.readme?.text || ""; // Use plain text from API
+        if (!reposResponse.ok) {
+          throw new Error(`GitHub API error: ${reposResponse.status}`);
+        }
 
-          // Extract metadata from README
-          const match = readmeContent.match(
-            /<!-- PROJECT_METADATA([\s\S]*?)-->/
-          );
-          if (!match) return null;
+        const repos = await reposResponse.json();
 
-          try {
-            const metadata = JSON.parse(match[1]);
-            const tags = metadata.tags || [];
+        const projectData = await Promise.all(
+          repos.map(async (repo) => {
+            try {
+              const readmeResponse = await fetch(
+                `https://api.github.com/repos/${GITHUB_USERNAME}/${repo.name}/readme`,
+              );
 
-            // Check if project has ignored tags
-            const hasIgnoredTags = tags.some((tag) =>
-              IGNORED_TAGS.includes(tag)
-            );
-            return {
-              id: repo.id,
-              title: metadata.title,
-              description: metadata.description,
-              videoSrc: metadata.video || null, // Null if it's not a video project
-              imagePreview: metadata.imagePreview || null, // Image preview for different projects
-              githubLink: metadata.githubLink || null,
-              netlifyLink: metadata.netlifyLink || null,
-              createdAt: new Date(repo.created_at),
-              isBest: readmeContent.includes('"best-one"'),
-              isMore:
-                readmeContent.includes('"more-project"') ||
-                readmeContent.includes('"all-projects"') ||
-                metadata.tags?.some((tag) => IGNORED_TAGS.includes(tag)),
-              // Flag to separate "More" projects
-              tags: tags.filter((tag) => !IGNORED_TAGS.includes(tag)), // Extract tags from README
-            };
-          } catch (error) {
-            console.error(`Error parsing metadata for ${repo.name}:`, error);
-            return null;
-          }
-        });
+              if (!readmeResponse.ok) return null;
 
-        setProjects(projectData.filter((p) => p !== null));
-      } catch (error) {
-        console.error("Error fetching projects:", error);
+              const readmeData = await readmeResponse.json();
+
+              // ✅ Strip newlines before decoding — GitHub adds \n in base64
+              const readmeContent = atob(readmeData.content.replace(/\n/g, ""));
+
+              const match = readmeContent.match(
+                /<!-- PROJECT_METADATA([\s\S]*?)-->/,
+              );
+
+              if (!match) return null;
+
+              const metadata = JSON.parse(match[1]);
+              const tags = metadata.tags || [];
+
+              return {
+                id: repo.id,
+                title: metadata.title,
+                description: metadata.description,
+                videoSrc: metadata.video || null,
+                imagePreview: metadata.imagePreview || null,
+                githubLink: metadata.githubLink || null,
+                netlifyLink: metadata.netlifyLink || null,
+                createdAt: new Date(repo.created_at),
+                isBest: readmeContent.includes('"best-one"'),
+                isMore:
+                  readmeContent.includes('"more-project"') ||
+                  readmeContent.includes('"all-projects"') ||
+                  tags.some((tag) => IGNORED_TAGS.includes(tag)),
+                tags: tags.filter((tag) => !IGNORED_TAGS.includes(tag)),
+              };
+            } catch (err) {
+              console.error(`❌ Error processing repo "${repo.name}":`, err);
+              return null;
+            }
+          }),
+        );
+
+        const validProjects = projectData.filter((p) => p !== null);
+        console.log(`📦 ${validProjects.length} valid projects loaded`);
+        setProjects(validProjects);
+      } catch (err) {
+        console.error("❌ Failed to fetch projects:", err.message);
+        setError(
+          err.message.includes("403")
+            ? "GitHub API rate limit reached. Please try again in an hour."
+            : "Failed to load projects. Please refresh and try again.",
+        );
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchProjects();
   }, []);
 
-  // Apply filtering based on selected category
   useEffect(() => {
     let displayedProjects = [];
 
     switch (filter) {
       case "Most Recent":
         displayedProjects = [...projects].sort(
-          (a, b) => b.createdAt - a.createdAt
+          (a, b) => b.createdAt - a.createdAt,
         );
         break;
       case "Best Projects":
-        displayedProjects = projects.filter((project) => project.isBest);
+        displayedProjects = projects.filter((p) => p.isBest);
         break;
       case "More":
-        displayedProjects = projects.filter((project) => project.isMore);
+        displayedProjects = projects.filter((p) => p.isMore);
         break;
       default:
         displayedProjects = projects;
     }
 
-    // Always sort by date after filtering
     displayedProjects.sort((a, b) => b.createdAt - a.createdAt);
-
-    // Show 3 by default
     setFilteredProjects(
-      isExpanded ? displayedProjects : displayedProjects.slice(0, 3)
+      isExpanded ? displayedProjects : displayedProjects.slice(0, 3),
     );
-    /*console.log("Filtered Projects:", displayedProjects);*/
   }, [filter, projects, isExpanded]);
 
   const handleFilterChange = (category) => {
     setFilter(category);
-    setIsExpanded(false); // Reset expansion when switching filters
+    setIsExpanded(false);
   };
+
+  if (loading) {
+    return (
+      <div className="project-section" id="projects">
+        <div className="projects-container">
+          <h1 className="section-title">My Projects 👩🏽‍💻</h1>
+          <p style={{ textAlign: "center", color: "#aaa", marginTop: "2rem" }}>
+            Loading projects...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="project-section" id="projects">
+        <div className="projects-container">
+          <h1 className="section-title">My Projects 👩🏽‍💻</h1>
+          <p
+            style={{ textAlign: "center", color: "#f87171", marginTop: "2rem" }}
+          >
+            {error}
+          </p>
+          <div style={{ textAlign: "center", marginTop: "1rem" }}>
+            <button onClick={() => window.location.reload()}>Retry</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="project-section" id="projects">
-      {/* Render Projects */}
-      {/* Pass filtering and toggle state to Projects */}
       <Projects
         projects={projects}
         filteredProjects={filteredProjects}
