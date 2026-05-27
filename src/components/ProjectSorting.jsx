@@ -55,7 +55,7 @@ function ProjectSorting() {
                 videoSrc: metadata.video || null,
                 imagePreview: metadata.imagePreview || null,
                 githubLink: metadata.githubLink || null,
-                netlifyLink: metadata.netlifyLink || null,
+                liveLink: metadata.liveLink || null,
                 createdAt: new Date(repo.created_at),
                 isBest: readmeContent.includes('"best-one"'),
                 isMore:

@@ -39,6 +39,7 @@ function Projects({
       "Page:",
       "Portfolio",
       "Animated",
+      "React",
     ];
     const words = title.split(/(\s+|\(|\)|,|\.)/).filter(Boolean);
 
@@ -119,12 +120,12 @@ function Projects({
                 className="project-vidbox autoDisplay"
                 onMouseEnter={() =>
                   handleMouseEnter(
-                    project.githubLink || project.name || project.id
+                    project.githubLink || project.name || project.id,
                   )
                 }
                 onMouseLeave={() =>
                   handleMouseLeave(
-                    project.githubLink || project.name || project.id
+                    project.githubLink || project.name || project.id,
                   )
                 }
               >
@@ -165,9 +166,9 @@ function Projects({
               <div className="buttons-and-tags">
                 <div className="project-links">
                   <button>
-                    {project.netlifyLink && (
+                    {project.liveLink && (
                       <a
-                        href={project.netlifyLink}
+                        href={project.liveLink}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
