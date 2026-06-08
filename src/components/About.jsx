@@ -41,7 +41,7 @@ function About() {
 
           <button className="resume-btn">
             <a
-              href="/Fernanda-Ruiz-Resume-2026.pdf"
+              href="Fernanda-Ruiz-Resume-2026.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"
