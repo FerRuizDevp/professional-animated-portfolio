@@ -10,13 +10,13 @@ function Hero() {
           Front-end Developer Portfolio
         </div>
         <h1>
-          Providing <span className="gradient">The Best</span> Creative{" "}
-          <span className="gradient">Experience</span>
+          Building <span className="gradient">Beautiful, </span>
+          <span className="gradient">Functional</span> Experiences
         </h1>
         <p>
-          🚀 I'm a Web Graphic Designer with extensive creative experience and a
-          self-taught Web Developer passionate about crafting visually stunning
-          and functional digital experiences.
+          🚀 I'm a Frontend Developer with a Graphic Design background <br />—
+          building at the intersection of design and code to create experiences
+          that look great and work great.
         </p>
         <button>
           <i className="bx bx-send"></i>
