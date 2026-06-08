@@ -10,7 +10,7 @@ function Hero() {
           Front-end Developer Portfolio
         </div>
         <h1>
-          Building <span className="gradient">Beautiful, </span>
+          Building <span className="gradient">Beautiful, </span> <br />
           <span className="gradient">Functional</span> Experiences
         </h1>
         <p>

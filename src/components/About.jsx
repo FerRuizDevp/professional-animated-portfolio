@@ -28,9 +28,9 @@ function About() {
         <div className="card">
           <p>
             Hey there! <span className="highlighted-text">I'm Fer,</span> a
-            freelance graphic and web designer with nearly five years of
-            experience crafting visually compelling designs and user-friendly
-            designs and websites.
+            Frontend Developer with a Graphic Design background — building at
+            the intersection of design and code to create experiences that look
+            great and work great.
           </p>
           <img src="media/images/card-profile-pic.png" alt="card image" />
         </div>
@@ -41,7 +41,7 @@ function About() {
 
           <button className="resume-btn">
             <a
-              href="fernanda-ruiz-resume.pdf"
+              href="/Fernanda-Ruiz-Resume-2026.pdf"
               download
               target="_blank"
               rel="noopener noreferrer"
@@ -55,7 +55,7 @@ function About() {
         <div className="card">
           <h1>My Coding Skills and Technologies</h1>
           <p>
-            HTML, CSS, JavaScript, React, Next.js, Python, SQL, and more
+            HTML, CSS, JavaScript, React, Node.js, Python, REST APIs, and more
             crafting dynamic, efficient, and scalable solutions.
           </p>
           <img src="media/images/grid4.png" alt="card image" />
@@ -64,8 +64,9 @@ function About() {
           <h1>My Creative Background</h1>
           <p>
             As a <span className="highlighted-text">Graphic Designer,</span>
-            <br /> I bring extensive expertise in design tools like Photoshop,
-            Illustrator, Figma, Adobe XD, Canva, and more.
+            <br /> I bring 5 years of expertise in Photoshop, Illustrator, and
+            Figma — with a strong foundation in design principles that shapes
+            how I write code.
           </p>
           <img src="media/images/grid5.png" alt="card image" />
         </div>
