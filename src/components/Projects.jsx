@@ -40,6 +40,8 @@ function Projects({
       "Portfolio",
       "Animated",
       "React",
+      "Store",
+      "App",
     ];
     const words = title.split(/(\s+|\(|\)|,|\.)/).filter(Boolean);
 
@@ -71,12 +73,17 @@ function Projects({
     Expressjs: "devicon-express-original tada-hover",
     Nextjs: "devicon-nextjs-plain tada-hover",
     Graphql: "bx bxl-graphql bx-tada-hover",
+    PostgreSQL: "bx bxl-postgresql bx-tada-hover",
+    TanStackQuery: "devicon-tanstackquery-original tada-hover",
     Framer_motion: "devicon-framermotion-original tada-hover",
     Python: "bx bxl-python bx-tada-hover",
     Django: "bx bxl-django bx-tada-hover",
     Typescript: "bx bxl-typescript bx-tada-hover",
     Tailwind: "bx bxl-tailwind-css bx-tada-hover",
     Figma: "bx bxl-figma bx-tada-hover",
+    Clerk: "bxl bx-clerk bx-tada-hover",
+    Polar: "bxl bx-polar bx-tada-hover",
+    Stream: "bx bxl-stream bx-tada-hover",
   };
 
   // Render Filter Buttons
